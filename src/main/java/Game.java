@@ -10,23 +10,21 @@ import com.googlecode.lanterna.terminal.Terminal;
 import java.io.IOException;
 
 public class Game {
-    private Screen screen;
+    private TerminalScreen screen;
+    Hero player = new Hero(10,10);
     private int x = 10;
     private int y = 10;
-    public Game() throws IOException {
-        Terminal terminal = new DefaultTerminalFactory().createTerminal();
-        screen = new TerminalScreen(terminal);
+    public Game(int alt, int larg) throws IOException {
+        Terminal terminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(alt, larg)).createTerminal();
+        Screen screen = new TerminalScreen(terminal);
         screen.setCursorPosition(null); // we don't need a cursor
         screen.startScreen(); // screens must be started
         screen.doResizeIfNecessary(); // resize screen if necessary
-        TerminalSize terminalSize = new TerminalSize(50, 25);
-        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
     }
 
     private void draw() throws IOException {
         screen.clear();
-        screen.setCharacter(x, y,
-                TextCharacter.fromCharacter('O')[0]);
+        player.draw(screen);
         screen.refresh();
     }
     public void run() throws IOException {
@@ -42,16 +40,17 @@ public class Game {
     }
     private void processKey(KeyStroke key) {
         if (key.getKeyType() == KeyType.ArrowUp){
-            y-=1;
+            player.moveUp();
         };
         if (key.getKeyType() == KeyType.ArrowDown){
-            y+=1;
+            player.moveDown();
         };
         if (key.getKeyType() == KeyType.ArrowLeft){
-            x-=1;
+            player.moveLeft();
         };
         if (key.getKeyType() == KeyType.ArrowRight){
-            x+=1;
+            player.moveRight();
+
         };
     }
-}
+}//começo9
