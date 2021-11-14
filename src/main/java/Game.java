@@ -8,7 +8,7 @@ import com.googlecode.lanterna.terminal.Terminal;
 import java.io.IOException;
 
 public class Game {
-    private TerminalScreen screen;
+    private final TerminalScreen screen;
     Position position;
     Hero player;
     Arena arena;
@@ -20,7 +20,7 @@ public class Game {
         screen.startScreen(); // screens must be started
         screen.doResizeIfNecessary(); // resize screen if necessary
 
-        this.position = new Position(10,10);
+        this.position = new Position(50,25);
         this.player = new Hero(this.position);
         this.arena  = new Arena(100,50, this.player);
     }
@@ -31,12 +31,14 @@ public class Game {
         screen.refresh();
     }
     public void run() throws IOException {
-        while(true) {
+        boolean keep = true;
+        while(keep) {
             draw();
             KeyStroke key = screen.readInput();
             processKey(key);
             if (key.getKeyType() == KeyType.Character && (key.getCharacter() == 'q' || key.getCharacter() == 'Q') ){
                 screen.close();
+                keep = false;
             }
         }
     }
