@@ -1,0 +1,1 @@
+The guide is confusing but Luh is a god ^^
