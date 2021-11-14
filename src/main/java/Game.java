@@ -1,8 +1,6 @@
 import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
-import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
@@ -10,10 +8,12 @@ import com.googlecode.lanterna.terminal.Terminal;
 import java.io.IOException;
 
 public class Game {
+    Position position = new Position(10,10);
     private TerminalScreen screen;
-    Hero player = new Hero(10,10);
-    private int x = 10;
-    private int y = 10;
+    Hero player = new Hero(position);
+    Arena arena = new Arena(100,100, player);
+    //private int x = 10;
+    //private int y = 10;
     public Game(int alt, int larg) throws IOException {
         Terminal terminal = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(alt, larg)).createTerminal();
         screen = new TerminalScreen(terminal);
@@ -31,7 +31,7 @@ public class Game {
         while(true){
         draw();
         KeyStroke key = screen.readInput();
-        processKey(key);
+            processKey(key);
             if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q' || key.getCharacter() == 'Q' ){
                 screen.close();
             }
@@ -39,17 +39,20 @@ public class Game {
     }
     private void processKey(KeyStroke key) {
         if (key.getKeyType() == KeyType.ArrowUp){
-            player.moveUp();
+            moveHero(player.moveUp());
         };
         if (key.getKeyType() == KeyType.ArrowDown){
-            player.moveDown();
+            moveHero(player.moveDown());
         };
         if (key.getKeyType() == KeyType.ArrowLeft){
-            player.moveLeft();
+            moveHero(player.moveLeft());
         };
         if (key.getKeyType() == KeyType.ArrowRight){
-            player.moveRight();
-
+            moveHero(player.moveRight());
         };
     }
-}//começo9
+
+    private void moveHero(Position position) {
+        player.setPosition(position);
+    }
+}
