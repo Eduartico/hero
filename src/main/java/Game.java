@@ -22,7 +22,7 @@ public class Game {
 
         this.position = new Position(10,10);
         this.player = new Hero(this.position);
-        this.arena  = new Arena(15,15, this.player);
+        this.arena  = new Arena(100,50, this.player);
     }
 
     private void draw() throws IOException {

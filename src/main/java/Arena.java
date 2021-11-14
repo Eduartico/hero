@@ -44,14 +44,14 @@ public class Arena {
     }
 
     public void draw(TextGraphics graphics) {
-        graphics.setBackgroundColor(TextColor.Factory.fromString("#336699"));
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#ff6a00"));
         graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
 
         for(Wall wall : walls) {
             wall.draw(graphics);
         }
 
-        graphics.setBackgroundColor(TextColor.Factory.fromString("#336699"));
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#ff6a00"));
         player.draw(graphics);
     }
 

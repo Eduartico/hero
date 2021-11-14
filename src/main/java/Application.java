@@ -9,6 +9,6 @@ import java.io.IOException;
 
 public class Application {
     public static void main(String[] args) throws IOException {
-        new Game(40,40).run();
+        new Game(245,70).run();
     }
 }

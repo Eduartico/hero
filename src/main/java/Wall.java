@@ -13,7 +13,7 @@ public class Wall {
     }
 
     public void draw(TextGraphics graphics) {
-        graphics.setBackgroundColor(TextColor.Factory.fromString("#eb3434"));
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#ffffff"));
         graphics.putString(new TerminalPosition(width, height)," ");
     }
 
