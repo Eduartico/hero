@@ -32,8 +32,7 @@ public class Game {
         draw();
         KeyStroke key = screen.readInput();
         processKey(key);
-            if (key.getKeyType() == KeyType.Character &&
-                    key.getCharacter() == 'q' || key.getCharacter() == 'Q' ){
+            if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q' || key.getCharacter() == 'Q' ){
                 screen.close();
             }
         }

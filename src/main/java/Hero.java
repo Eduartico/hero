@@ -21,7 +21,7 @@ public class Hero {
         }
         public void draw(Screen screen){
         screen.setCharacter(x, y,
-        TextCharacter.fromCharacter('O')[0]);
+        TextCharacter.fromCharacter('0')[0]);
         }
 
 
