@@ -1,13 +1,12 @@
 import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import com.googlecode.lanterna.screen.Screen;
 
-public class Hero {
+public class Hero extends Element {
     private Position position;
     public Hero(Position position) {
+        super(position);
         this.position = position;
     }
         public Position moveUp() {
