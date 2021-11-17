@@ -18,7 +18,7 @@ public class Arena {
         this.width = width;
         this.height = height;
         this.player = player;
-        this.walls = this.createWalls();
+        this.walls = createWalls();
     }
 
     public void processKey(KeyStroke key) {
@@ -65,7 +65,7 @@ public class Arena {
         int y = position.getY();
 
         for(Wall wall: walls) {
-            if(wall.getWidth() == x && wall.getHeight() == y) {
+            if(wall.position.getX() == x && wall.position.getY() == y) {
                 return false;
             }
         }

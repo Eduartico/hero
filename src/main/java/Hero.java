@@ -4,10 +4,8 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class Hero extends Element {
-    private Position position;
     public Hero(Position position) {
-        super(position);
-        this.position = position;
+        super(position.getX(), position.getY());
     }
         public Position moveUp() {
             return new Position(position.getX(), position.getY() - 1);

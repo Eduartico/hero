@@ -1,13 +1,13 @@
 import com.googlecode.lanterna.graphics.TextGraphics;
 
-import javax.swing.text.Position;
-
-public abstract class Element {
-    public Position position;
+abstract class Element {
+    public int x, y;
+    protected Position position;
     public Element(int x, int y) {
         position = new Position(x,y);
     }
-    public void draw(TextGraphics graphics){}
+    abstract void draw(TextGraphics graphics);
+
     public Position getPosition()
     {
         return position;
