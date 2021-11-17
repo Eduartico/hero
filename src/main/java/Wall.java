@@ -3,16 +3,15 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import javax.swing.text.Element;
 
-public class Wall extends Element {
+public abstract class Wall extends Element {
     private int width;
     private int height;
     private final Position position;
 
-    public Wall(int width, int height, Position position) {
+    public Wall(int width, int height)
+    {
         super();
-        this.position = position;
-        this.width = position.getX();
-        this.height = position.getY();
+        this.position = new Position(width,height);
     }
 
     public void draw(TextGraphics graphics) {
